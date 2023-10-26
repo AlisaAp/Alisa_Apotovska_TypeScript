@@ -10,7 +10,7 @@ class Direction {
     levels: string[] = [];
     private readonly _name: string;
 
-    get name() {
+    get name(): string {
         return this._name;
     }
 
@@ -18,7 +18,7 @@ class Direction {
         this._name = name;
     }
 
-    addLevel(level: string) {
+    addLevel(level: string): void {
         this.levels.push(level);
     }
 }
@@ -64,7 +64,7 @@ class Group {
         this._students.push(student);
     }
 
-    showPerformance() {
+    showPerformance(): Student[] {
 
         const sortedStudents = this.students.toSorted(
             (a: Student, b: Student) => b.getPerformanceRating() - a.getPerformanceRating()
@@ -91,7 +91,7 @@ class Student {
         return `${this.lastName} ${this.firstName}`;
     }
 
-    set fullName(value) {
+    set fullName(value: string) {
         [this.lastName, this.firstName] = value.split(" ");
 
     }
