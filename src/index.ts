@@ -1,8 +1,11 @@
-interface ISuccessData {
-    databaseId?: number,
+interface IRequest {
     sum: number,
     from: number,
     to: number
+}
+
+interface ISuccessData extends IRequest {
+    databaseId: number,
 }
 
 interface IFailedData {
@@ -10,17 +13,22 @@ interface IFailedData {
     errorCode: number
 }
 
-interface IResponse {
-    status: "success" | "failed",
-    data: ISuccessData | IFailedData
+interface ISuccessResponse {
+    status: "success",
+    data: ISuccessData,
 }
 
-const request: ISuccessData = {
+interface IFailedResponse {
+    status: "failed",
+    data: IFailedData,
+}
+
+const request: IRequest = {
     "sum": 10000,
     "from": 2,
-    "to": 4
+    "to": 4,
 };
-const successResponse: IResponse = {
+const successResponse: ISuccessResponse = {
     "status": "success",
     "data": {
         "databaseId": 567,
@@ -30,7 +38,7 @@ const successResponse: IResponse = {
     }
 };
 
-const failedResponse: IResponse = {
+const failedResponse: IFailedResponse = {
     "status": "failed",
     "data": {
         "errorMessage": "Недостаточно средств",

@@ -2,7 +2,7 @@
 const request = {
     "sum": 10000,
     "from": 2,
-    "to": 4
+    "to": 4,
 };
 const successResponse = {
     "status": "success",
